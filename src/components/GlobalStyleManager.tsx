@@ -18,16 +18,20 @@ export default function GlobalStyleManager() {
       // 2. Load Google Analytics
       if (data.google_analytics) {
         const ga = data.google_analytics as { measurement_id: string; is_active: boolean };
-        if (ga.is_active && ga.measurement_id && ga.measurement_id !== 'G-XXXXXXXXXX') {
+        // Basic sanitization to prevent XSS if someone compromises the DB
+        const isValidId = /^[A-Z0-9-]+$/i.test(ga.measurement_id);
+
+        if (ga.is_active && ga.measurement_id && isValidId && ga.measurement_id !== 'G-XXXXXXXXXX') {
           // Check if already loaded
           if (!document.getElementById('google-analytics')) {
             const script1 = document.createElement('script');
             script1.async = true;
-            script1.src = `https://www.googletagmanager.com/gtag/js?id=${ga.measurement_id}`;
             script1.id = 'google-analytics';
+            script1.src = `https://www.googletagmanager.com/gtag/js?id=${ga.measurement_id}`;
             document.head.appendChild(script1);
 
             const script2 = document.createElement('script');
+            script2.id = 'google-analytics-config';
             script2.innerHTML = `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
