@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { 
   LayoutDashboard, LogOut, Home, Users, Briefcase, 
-  FileText, Settings, Menu, X, MessageSquare, Map, Layers, ExternalLink 
+  FileText, Settings, Menu, X, MessageSquare, Map, Layers, ExternalLink, Zap 
 } from "lucide-react";
 import { useAuth, signOut } from "../../lib/auth";
 
@@ -53,6 +53,7 @@ export default function DashboardLayout() {
     {
       label: "Sistema",
       items: [
+        { name: "Plugins", icon: Zap, href: "/admin/plugins" },
         { name: "Configurações", icon: Settings, href: "/admin/settings" },
       ]
     },

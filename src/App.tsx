@@ -41,6 +41,7 @@ import EditHeader from "./pages/admin/EditHeader";
 import EditFooter from "./pages/admin/EditFooter";
 import Overview from "./pages/admin/Overview";
 import Settings from "./pages/admin/Settings";
+import EditPlugins from "./pages/admin/EditPlugins";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import GlobalStyleManager from "./components/GlobalStyleManager";
 
@@ -67,6 +68,7 @@ export default function App() {
             <Route path="footer" element={<EditFooter />} />
             <Route path="textos" element={<div className="p-8">Em desenvolvimento...</div>} />
             <Route path="settings" element={<Settings />} />
+            <Route path="plugins" element={<EditPlugins />} />
           </Route>
         </Route>
 
