@@ -69,7 +69,7 @@ export default function DashboardLayout() {
       )}
 
       {/* Sidebar */}
-      <aside className={`bg-brand-navy text-white w-64 flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:relative z-50 h-screen overflow-y-auto`}>
+      <aside className={`bg-brand-navy text-white w-64 flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:relative z-50 h-screen flex flex-col`}>
         <div className="h-16 flex items-center px-6 border-b border-white/10 relative shrink-0">
           <span className="text-xl font-bold tracking-tight">Finance <span className="text-brand-gold font-light">Admin</span></span>
           <button onClick={() => setIsSidebarOpen(false)} className="absolute right-4 lg:hidden">
@@ -115,16 +115,17 @@ export default function DashboardLayout() {
               </nav>
             </div>
           ))}
-        </div>
 
-        <div className="absolute bottom-0 w-full p-4 border-t border-white/10 bg-brand-navy">
-          <button 
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-red-300 hover:bg-white/10 hover:text-red-200 transition-colors"
-          >
-            <LogOut className="h-5 w-5" />
-            Sair do Painel
-          </button>
+          {/* Logout Section at the bottom of the list */}
+          <div className="pt-4 border-t border-white/10 mt-auto">
+            <button 
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-300 hover:bg-white/10 hover:text-red-200 transition-colors"
+            >
+              <LogOut className="h-5 w-5" />
+              Sair do Painel
+            </button>
+          </div>
         </div>
       </aside>
 
