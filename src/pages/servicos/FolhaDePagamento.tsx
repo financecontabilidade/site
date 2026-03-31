@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function FolhaDePagamento() {
   return (
     <ServicePageTemplate
+      slug="servico-folha"
       badge="Departamento Pessoal"
       title="Folha de Pagamento e eSocial"
       subtitle="Gestão completa do seu time, garantindo que sua empresa cumpra 100% das obrigações trabalhistas e previdenciárias."

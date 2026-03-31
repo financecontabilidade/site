@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ChevronDown, ArrowRight } from "lucide-react";
+import { usePageContent } from "../hooks/useCmsContent";
 
 interface Stat {
   value: string;
@@ -31,6 +32,7 @@ interface RelatedService {
 }
 
 interface ServicePageProps {
+  slug: string; // Add slug for CMS
   badge: string;
   title: string;
   subtitle: string;
@@ -53,10 +55,11 @@ interface ServicePageProps {
 }
 
 export default function ServicePageTemplate({
-  badge,
-  title,
-  subtitle,
-  heroImage,
+  slug,
+  badge: defaultBadge,
+  title: defaultTitle,
+  subtitle: defaultSubtitle,
+  heroImage: defaultHeroImage,
   introTitle,
   introText,
   stats,
@@ -74,6 +77,21 @@ export default function ServicePageTemplate({
   relatedServices,
 }: ServicePageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // CMS Integration
+  const { data: cms } = usePageContent(slug, {
+    dados: {
+      badge: defaultBadge,
+      titulo: defaultTitle,
+      subtitulo: defaultSubtitle,
+      hero_imagem: defaultHeroImage
+    }
+  });
+
+  const badge = String(cms.dados.badge || defaultBadge);
+  const title = String(cms.dados.titulo || defaultTitle);
+  const subtitle = String(cms.dados.subtitulo || defaultSubtitle);
+  const heroImage = String(cms.dados.hero_imagem || defaultHeroImage);
 
   return (
     <div className="bg-white">

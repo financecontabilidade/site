@@ -1,6 +1,25 @@
 import { motion } from "framer-motion";
+import { usePageContent } from "../hooks/useCmsContent";
+import type { CmsSection } from "../lib/cms";
+
+const PAGE_DEFAULTS: Record<string, CmsSection> = {
+  hero: {
+    label: "Atualizado em Janeiro de 2025",
+    titulo: "Termos de Uso"
+  },
+  conteudo: {
+    empresa: "Finance Gestão e Negócios LTDA (Finance Contabilidade)",
+    cnpj: "10.379.943/0001-20",
+    endereco: "R. Visc. de Quissamã, 98 - Centro, Macaé - RJ, 27910-020",
+    intro: "Bem-vindo ao site da Finance Gestão e Negócios LTDA (Finance Contabilidade). Ao acessar e utilizar nosso site, você concorda legalmente com estes Termos de Uso. Leia-os com atenção."
+  }
+};
 
 export default function TermosUso() {
+  const { data: cms } = usePageContent('termos-uso', PAGE_DEFAULTS);
+  const hero = cms.hero;
+  const conteudo = cms.conteudo;
+
   return (
     <div className="bg-brand-light min-h-screen pt-32 pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,12 +28,12 @@ export default function TermosUso() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white p-10 md:p-16 rounded-[2rem] shadow-sm"
         >
-          <p className="text-[10px] font-bold text-brand-gold tracking-widest uppercase mb-4">Atualizado em Janeiro de 2025</p>
-          <h1 className="text-4xl md:text-5xl font-light text-brand-navy mb-12">Termos de Uso</h1>
+          <p className="text-[10px] font-bold text-brand-gold tracking-widest uppercase mb-4">{String(hero.label || '')}</p>
+          <h1 className="text-4xl md:text-5xl font-light text-brand-navy mb-12">{String(hero.titulo || '')}</h1>
           
           <div className="text-gray-600 space-y-6 leading-relaxed">
             <p>
-              Bem-vindo ao site da <strong>Finance Gestão e Negócios LTDA (Finance Contabilidade)</strong>. Ao acessar e utilizar nosso site, você concorda legalmente com estes Termos de Uso. Leia-os com atenção.
+              {String(conteudo.intro || '')}
             </p>
 
             <h2 className="text-2xl font-bold text-brand-navy pt-6">1. Objetivo do Site</h2>
@@ -24,7 +43,7 @@ export default function TermosUso() {
 
             <h2 className="text-2xl font-bold text-brand-navy pt-6">2. Direitos de Propriedade Intelectual</h2>
             <p>
-              Todos os direitos de propriedade intelectual relacionados ao website, incluindo textos institucionais, logotipos, organização das sessões, design, gráficos e imagens, são de propriedade exclusiva da Finance Gestão e Negócios LTDA ou de parceiros licenciados (Desenvolvido pelo Grupo 1925).
+              Todos os direitos de propriedade intelectual relacionados ao website, incluindo textos institucionais, logotipos, organização das sessões, design, gráficos e imagens, são de propriedade exclusiva da {String(conteudo.empresa || '')} ou de parceiros licenciados.
             </p>
             <p>
               A reprodução, distribuição, modificação ou uso comercial não autorizado de qualquer material deste site constitui violação de direitos autorais e sujeitará o infrator às sanções legais.

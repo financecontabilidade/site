@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function PlanejamentoTributario() {
   return (
     <ServicePageTemplate
+      slug="servico-planejamento"
       badge="Estratégia Fiscal"
       title="Planejamento Tributário"
       subtitle="Pague menos impostos legalmente. Decisões fiscais inteligentes antes que a obrigação aconteça."

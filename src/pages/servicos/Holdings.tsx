@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function Holdings() {
   return (
     <ServicePageTemplate
+      slug="servico-holdings"
       badge="Proteção e Sucessão"
       title="Holding Familiar e Imobiliária"
       subtitle="Organização patrimonial, sucessão pacífica e eficiência tributária na gestão dos seus bens."

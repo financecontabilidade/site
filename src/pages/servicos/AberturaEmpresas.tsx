@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function AberturaEmpresas() {
   return (
     <ServicePageTemplate
+      slug="servico-abertura"
       badge="Legalização"
       title="Abertura e Regularização de Empresas"
       subtitle="O primeiro passo para um negócio de sucesso é uma estrutura societária sólida e legal."

@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function EscrituracaoContabil() {
   return (
     <ServicePageTemplate
+      slug="servico-escrituracao"
       badge="Contabilidade Base"
       title="Escrituração Contábil e Fiscal"
       subtitle="A base de dados que alimenta um planejamento tributário eficiente e garante a conformidade do seu negócio."

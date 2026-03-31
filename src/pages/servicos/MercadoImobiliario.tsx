@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function MercadoImobiliario() {
   return (
     <ServicePageTemplate
+      slug="servico-imobiliario"
       badge="Especialidade"
       title="Mercado Imobiliário"
       subtitle="Contabilidade e planejamento tributário especializados para construtoras, incorporadoras, loteadoras e imobiliárias."

@@ -37,17 +37,14 @@ export default function Footer() {
           
           {/* Column 1: Info */}
           <div className="flex flex-col">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="bg-brand-gold p-2 rounded-full w-8 h-8 flex items-center justify-center shrink-0">
-                <span className="text-brand-navy font-bold text-xs">F</span>
-              </div>
-              <span className="font-bold text-lg text-white tracking-tight">Finance Contabilidade</span>
+            <Link to="/" className="flex flex-col items-start mb-8 group">
+              <img src="/logo-branca.png" alt="Finance" className="h-[44px] md:h-[50px] object-contain" />
             </Link>
             <div className="space-y-3 text-sm text-gray-400">
               <p>Finance Gestão e Negócios LTDA</p>
               <p>CNPJ 10.379.943/0001-20</p>
               <p>Fundada em Macaé · 29/09/2008</p>
-              <p>R. Visconde de Quissama, 98 · Centro</p>
+              <p>R. Visc. de Quissamã, 98 · Centro</p>
               <p>CEP 27910-020 · Macaé, RJ</p>
             </div>
           </div>
@@ -80,7 +77,7 @@ export default function Footer() {
             <h3 className="text-[10px] font-bold text-brand-gold tracking-widest uppercase mb-6">Contatos</h3>
             <ul className="space-y-4">
               <li><a href="#" onClick={handleWhatsApp} className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-2">(22) 99245-8575</a></li>
-              <li><Link to="/contato" className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-start gap-2">R. Visconde de Quissama, 98<br/>Centro, Macaé - RJ</Link></li>
+              <li><Link to="/contato" className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-start gap-2">R. Visc. de Quissamã, 98<br/>Centro, Macaé - RJ</Link></li>
               <li className="text-sm text-gray-400 flex items-start gap-2">Seg a Quinta: 08h às 17h30<br/>Sexta: 08h às 17h</li>
               <li><Link to="/contato" className="text-sm text-brand-gold font-bold hover:text-white transition-colors mt-2 inline-block">Fale Conosco &rarr;</Link></li>
             </ul>

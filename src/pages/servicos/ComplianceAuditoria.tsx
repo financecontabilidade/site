@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function ComplianceAuditoria() {
   return (
     <ServicePageTemplate
+      slug="servico-compliance"
       badge="Governança"
       title="Compliance e Auditoria Interna"
       subtitle="Proteja o patrimônio da sua empresa e garanta que todos os processos estejam dentro da lei."

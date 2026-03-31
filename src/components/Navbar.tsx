@@ -43,12 +43,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-brand-gold w-1/2"></div>
-                <span className="text-white font-bold text-lg relative z-10">F</span>
-              </div>
-              <span className="font-bold text-xl text-brand-navy tracking-tight">Finance Contabilidade</span>
+            <Link to="/" className="flex items-center group">
+              <img src="/logo.png" alt="Finance" className="h-[36px] md:h-[44px] transition-transform group-hover:scale-105" />
             </Link>
           </div>
 

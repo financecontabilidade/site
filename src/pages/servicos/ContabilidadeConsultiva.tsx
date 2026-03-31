@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function ContabilidadeConsultiva() {
   return (
     <ServicePageTemplate
+      slug="servico-consultiva"
       badge="Gestão Estratégica"
       title="Contabilidade Consultiva e Estratégica"
       subtitle="Transformamos os números da sua empresa em um mapa claro para o crescimento e a lucratividade."

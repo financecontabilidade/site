@@ -4,6 +4,7 @@ import ServicePageTemplate from "../../components/ServicePageTemplate";
 export default function SaudeTerceiroSetor() {
   return (
     <ServicePageTemplate
+      slug="servico-saude"
       badge="Especialidade"
       title="Saúde & Terceiro Setor"
       subtitle="Contabilidade especializada para clínicas, consultórios, médicos, ONGs e associações."

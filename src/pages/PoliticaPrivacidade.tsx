@@ -1,6 +1,25 @@
 import { motion } from "framer-motion";
+import { usePageContent } from "../hooks/useCmsContent";
+import type { CmsSection } from "../lib/cms";
+
+const PAGE_DEFAULTS: Record<string, CmsSection> = {
+  hero: {
+    label: "Atualizado em Janeiro de 2025",
+    titulo: "Política de Privacidade"
+  },
+  conteudo: {
+    empresa: "Finance Gestão e Negócios LTDA (Finance Contabilidade)",
+    cnpj: "10.379.943/0001-20",
+    endereco: "R. Visc. de Quissamã, 98 - Centro, Macaé - RJ, 27910-020",
+    intro: "A Finance Gestão e Negócios LTDA valoriza a privacidade de seus usuários e clientes. Elaboramos esta Política de Privacidade para demonstrar nosso compromisso em proteger seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)."
+  }
+};
 
 export default function PoliticaPrivacidade() {
+  const { data: cms } = usePageContent('politica-privacidade', PAGE_DEFAULTS);
+  const hero = cms.hero;
+  const conteudo = cms.conteudo;
+
   return (
     <div className="bg-brand-light min-h-screen pt-32 pb-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,12 +28,12 @@ export default function PoliticaPrivacidade() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white p-10 md:p-16 rounded-[2rem] shadow-sm"
         >
-          <p className="text-[10px] font-bold text-brand-gold tracking-widest uppercase mb-4">Atualizado em Janeiro de 2025</p>
-          <h1 className="text-4xl md:text-5xl font-light text-brand-navy mb-12">Política de Privacidade</h1>
+          <p className="text-[10px] font-bold text-brand-gold tracking-widest uppercase mb-4">{String(hero.label || '')}</p>
+          <h1 className="text-4xl md:text-5xl font-light text-brand-navy mb-12">{String(hero.titulo || '')}</h1>
           
           <div className="text-gray-600 space-y-6 leading-relaxed">
             <p>
-              A <strong>Finance Gestão e Negócios LTDA (Finance Contabilidade)</strong>, com sede na Rua Visconde de Quissama, 98, Centro, Macaé/RJ, inscrita no CNPJ sob o nº 10.379.943/0001-20, valoriza a privacidade de seus usuários e clientes. Elaboramos esta Política de Privacidade para demonstrar nosso compromisso em proteger seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).
+              A <strong>{String(conteudo.empresa || '')}</strong>, com sede na {String(conteudo.endereco || '')}, inscrita no CNPJ sob o nº {String(conteudo.cnpj || '')}, {String(conteudo.intro || '')}
             </p>
 
             <h2 className="text-2xl font-bold text-brand-navy pt-6">1. Dados que Coletamos</h2>
@@ -69,7 +88,7 @@ export default function PoliticaPrivacidade() {
 
             <h2 className="text-2xl font-bold text-brand-navy pt-6">7. Contato</h2>
             <p>
-              Caso tenha dúvidas sobre como seus dados são tratados, entre em contato através do formulário na nossa página de contato, ou visite nosso escritório na Rua Visconde de Quissama, 98, Macaé/RJ.
+              Caso tenha dúvidas sobre como seus dados são tratados, entre em contato através do formulário na nossa página de contato, ou visite nosso escritório na R. Visc. de Quissamã, 98 - Centro, Macaé - RJ, 27910-020.
             </p>
           </div>
         </motion.div>
