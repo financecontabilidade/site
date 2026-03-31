@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { 
   LayoutDashboard, LogOut, Home, Users, Briefcase, 
-  FileText, Settings, Menu, X, MessageSquare, Map, Layers 
+  FileText, Settings, Menu, X, MessageSquare, Map, Layers, ExternalLink 
 } from "lucide-react";
 import { useAuth, signOut } from "../../lib/auth";
 
@@ -70,14 +70,27 @@ export default function DashboardLayout() {
 
       {/* Sidebar */}
       <aside className={`bg-brand-navy text-white w-64 flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:relative z-50 h-screen overflow-y-auto`}>
-        <div className="h-16 flex items-center px-6 border-b border-white/10 relative">
+        <div className="h-16 flex items-center px-6 border-b border-white/10 relative shrink-0">
           <span className="text-xl font-bold tracking-tight">Finance <span className="text-brand-gold font-light">Admin</span></span>
           <button onClick={() => setIsSidebarOpen(false)} className="absolute right-4 lg:hidden">
             <X className="h-5 w-5 text-gray-400" />
           </button>
         </div>
+
+        {/* View Public Site Link */}
+        <div className="px-4 pt-4 shrink-0">
+          <a 
+            href="/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white transition-all border border-white/5"
+          >
+            <ExternalLink className="h-4 w-4 text-brand-gold" />
+            Ver Site Público
+          </a>
+        </div>
         
-        <div className="p-4 space-y-5 pb-24">
+        <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-5 pb-24">
           {navGroups.map((group) => (
             <div key={group.label}>
               <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2 px-2">{group.label}</p>

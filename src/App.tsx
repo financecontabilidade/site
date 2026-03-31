@@ -39,18 +39,22 @@ import EditTestimonials from "./pages/admin/EditTestimonials";
 import EditSegments from "./pages/admin/EditSegments";
 import EditHeader from "./pages/admin/EditHeader";
 import EditFooter from "./pages/admin/EditFooter";
+import Overview from "./pages/admin/Overview";
+import Settings from "./pages/admin/Settings";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
+import GlobalStyleManager from "./components/GlobalStyleManager";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <GlobalStyleManager />
       <ScrollToTop />
       <Routes>
         {/* Admin Routes */}
         <Route path="/admin/login" element={<Login />} />
         <Route path="/admin" element={<ProtectedRoute />}>
           <Route element={<DashboardLayout />}>
-            <Route index element={<div className="p-8"><h1 className="text-2xl font-bold text-gray-800">Visão Geral</h1><p className="text-gray-500 mt-2">Bem-vindo ao painel. Selecione uma página no menu lateral.</p></div>} />
+            <Route index element={<Overview />} />
             <Route path="home" element={<EditHome />} />
             <Route path="quem-somos" element={<EditQuemSomos />} />
             <Route path="servicos" element={<EditServicos />} />
@@ -62,7 +66,7 @@ export default function App() {
             <Route path="header" element={<EditHeader />} />
             <Route path="footer" element={<EditFooter />} />
             <Route path="textos" element={<div className="p-8">Em desenvolvimento...</div>} />
-            <Route path="settings" element={<div className="p-8">Em desenvolvimento...</div>} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
 
