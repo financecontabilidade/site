@@ -22,6 +22,8 @@ export default function DashboardLayout() {
       label: "Geral",
       items: [
         { name: "Visão Geral", icon: LayoutDashboard, href: "/admin" },
+        { name: "Cabeçalho", icon: Menu, href: "/admin/header" },
+        { name: "Rodapé", icon: Layers, icon_custom: Settings, href: "/admin/footer" },
       ]
     },
     {

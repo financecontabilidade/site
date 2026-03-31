@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Phone, ArrowUpRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { cn } from "../lib/utils";
+import { getPageContent } from "../lib/cms";
 
 const servicesDropdown = [
   { name: "Escrituração Contábil e Fiscal", path: "/servicos/escrituracao-contabil" },
@@ -27,6 +28,18 @@ export default function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const [headerSettings, setHeaderSettings] = useState({
+    logo_url: "/logo.png",
+    whatsapp_phone: "(22) 99245-8575",
+    whatsapp_link: "https://wa.me/5522992458575",
+    cta_text: "Fale Conosco"
+  });
+
+  useEffect(() => {
+    getPageContent('globals').then(data => {
+      if (data.header) setHeaderSettings(data.header as any);
+    });
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -44,7 +57,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
-              <img src="/logo.png" alt="Finance" className="h-[36px] md:h-[44px] transition-transform group-hover:scale-105" />
+              <img src={headerSettings.logo_url} alt="Finance" className="h-[36px] md:h-[44px] transition-transform group-hover:scale-105" />
             </Link>
           </div>
 
@@ -127,13 +140,13 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center">
             <a
-              href="https://wa.me/5522992458575"
+              href={headerSettings.whatsapp_link}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-brand-navy text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-navy/90 transition-colors shadow-sm"
             >
               <Phone className="w-4 h-4" />
-              Fale Conosco
+              {headerSettings.cta_text}
             </a>
           </div>
 
@@ -215,14 +228,14 @@ export default function Navbar() {
             })}
             <div className="pt-4 mt-4 border-t border-gray-100">
               <a
-                href="https://wa.me/5522992458575"
+                href={headerSettings.whatsapp_link}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2 w-full bg-brand-navy text-white px-6 py-3 rounded-full text-base font-medium hover:bg-brand-navy/90"
               >
                 <Phone className="w-5 h-5" />
-                Fale Conosco
+                {headerSettings.cta_text}
               </a>
             </div>
           </div>

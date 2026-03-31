@@ -1,6 +1,29 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getPageContent } from "../lib/cms";
 
 export default function Footer() {
+  const [footer, setFooter] = useState({
+    logo_url: "/logo-branca.png",
+    company_name: "Finance Gestão e Negócios LTDA",
+    cnpj: "10.379.943/0001-20",
+    fundacao: "Fundada em Macaé · 29/09/2008",
+    endereco_linha1: "R. Visc. de Quissamã, 98 · Centro",
+    endereco_linha2: "CEP 27910-020 · Macaé, RJ",
+    whatsapp_display: "(22) 99245-8575",
+    horario_seg_qui: "Seg a Quinta: 08h às 17h30",
+    horario_sex: "Sexta: 08h às 17h",
+    copyright: "© 2026 Finance Gestão e Negócios LTDA",
+    newsletter_title: "Receba conteúdos sobre tributação e gestão.",
+    developed_by: "Grupo 1925"
+  });
+
+  useEffect(() => {
+    getPageContent('globals').then(data => {
+      if (data.footer) setFooter(data.footer as any);
+    });
+  }, []);
+
   const handleWhatsApp = (e: React.MouseEvent) => {
     e.preventDefault();
     const message = "Olá, vim pelo site e gostaria de falar com vocês.";
@@ -15,7 +38,7 @@ export default function Footer() {
         {/* Newsletter Section */}
         <div className="flex flex-col md:flex-row items-center justify-between border-b border-white/10 pb-12 mb-12 gap-8">
           <h2 className="text-xl md:text-2xl font-bold text-white max-w-sm leading-tight">
-            Receba conteúdos sobre<br />tributação e gestão.
+            {footer.newsletter_title}
           </h2>
           <form className="flex w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
             <input 
@@ -38,14 +61,14 @@ export default function Footer() {
           {/* Column 1: Info */}
           <div className="flex flex-col">
             <Link to="/" className="flex flex-col items-start mb-8 group">
-              <img src="/logo-branca.png" alt="Finance" className="h-[44px] md:h-[50px] object-contain" />
+              <img src={footer.logo_url} alt="Finance" className="h-[44px] md:h-[50px] object-contain" />
             </Link>
             <div className="space-y-3 text-sm text-gray-400">
-              <p>Finance Gestão e Negócios LTDA</p>
-              <p>CNPJ 10.379.943/0001-20</p>
-              <p>Fundada em Macaé · 29/09/2008</p>
-              <p>R. Visc. de Quissamã, 98 · Centro</p>
-              <p>CEP 27910-020 · Macaé, RJ</p>
+              <p>{footer.company_name}</p>
+              <p>CNPJ {footer.cnpj}</p>
+              <p>{footer.fundacao}</p>
+              <p>{footer.endereco_linha1}</p>
+              <p>{footer.endereco_linha2}</p>
             </div>
           </div>
 
@@ -76,9 +99,9 @@ export default function Footer() {
           <div>
             <h3 className="text-[10px] font-bold text-brand-gold tracking-widest uppercase mb-6">Contatos</h3>
             <ul className="space-y-4">
-              <li><a href="#" onClick={handleWhatsApp} className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-2">(22) 99245-8575</a></li>
-              <li><Link to="/contato" className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-start gap-2">R. Visc. de Quissamã, 98<br/>Centro, Macaé - RJ</Link></li>
-              <li className="text-sm text-gray-400 flex items-start gap-2">Seg a Quinta: 08h às 17h30<br/>Sexta: 08h às 17h</li>
+              <li><a href="#" onClick={handleWhatsApp} className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-2">{footer.whatsapp_display}</a></li>
+              <li><Link to="/contato" className="text-sm text-gray-400 hover:text-brand-gold transition-colors flex items-start gap-2">{footer.endereco_linha1}<br/>{footer.endereco_linha2}</Link></li>
+              <li className="text-sm text-gray-400 flex items-start gap-2">{footer.horario_seg_qui}<br/>{footer.horario_sex}</li>
               <li><Link to="/contato" className="text-sm text-brand-gold font-bold hover:text-white transition-colors mt-2 inline-block">Fale Conosco &rarr;</Link></li>
             </ul>
           </div>
@@ -88,7 +111,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <p className="text-[#64748B] text-xs text-center md:text-left">
-              &copy; {new Date().getFullYear()} Finance Gestão e Negócios LTDA · CNPJ 10.379.943/0001-20 · Macaé, RJ
+              {footer.copyright} · CNPJ {footer.cnpj} · Macaé, RJ
             </p>
             <div className="hidden md:flex items-center gap-6">
               <Link to="/politica-de-privacidade" className="text-[#64748B] hover:text-white text-xs transition-colors">Política de Privacidade</Link>
@@ -96,7 +119,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex items-center">
-            <span className="text-[#64748B] text-xs font-medium tracking-wide">Desenvolvido pelo Grupo 1925</span>
+            <span className="text-[#64748B] text-xs font-medium tracking-wide">Desenvolvido pelo {footer.developed_by}</span>
           </div>
         </div>
 

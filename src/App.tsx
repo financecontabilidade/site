@@ -37,6 +37,8 @@ import EditContato from "./pages/admin/EditContato";
 import EditServicosIndividuais from "./pages/admin/EditServicosIndividuais";
 import EditTestimonials from "./pages/admin/EditTestimonials";
 import EditSegments from "./pages/admin/EditSegments";
+import EditHeader from "./pages/admin/EditHeader";
+import EditFooter from "./pages/admin/EditFooter";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 
 export default function App() {
@@ -57,6 +59,8 @@ export default function App() {
             <Route path="servicos-individuais" element={<EditServicosIndividuais />} />
             <Route path="depoimentos" element={<EditTestimonials />} />
             <Route path="segmentos-menu" element={<EditSegments />} />
+            <Route path="header" element={<EditHeader />} />
+            <Route path="footer" element={<EditFooter />} />
             <Route path="textos" element={<div className="p-8">Em desenvolvimento...</div>} />
             <Route path="settings" element={<div className="p-8">Em desenvolvimento...</div>} />
           </Route>
